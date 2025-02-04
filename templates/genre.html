@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results for {{ request.GET.q }}</title>
+</head>
+<body>
+    <div class="search">
+        <form action="/search" method="get">
+            <input type="text" placeholder="Qidiruv..." name="q" value="{{ request.GET.q }}">
+        </form>
+    </div>
+
+    <div class="results">
+        {% for film in object_list %}
+        <div class="result">
+            <h1>{{ forloop.counter }}. {{ film.name }}</h1>
+            <p>{{ film.get_genre_display }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
